@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import getAPI from "./ApiPixabay";
-import {toast} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import Searchbar from "./Searchbar/Searchbar";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import Button from "./Button/Button";
@@ -24,7 +24,7 @@ class App extends Component {
       }
       );
 
-      if(images.lenght === 0){
+      if(images.length === 0){
         this.setState({loading:false});
         return toast.error("No found photo");
       }
@@ -71,6 +71,7 @@ class App extends Component {
         images.length > 0 &&
         images.length % 12 === 0 && <Button more={loadMoreBtn}/>
       )}
+      <ToastContainer autoClose={3000}/>
     </div>
   );
   }
